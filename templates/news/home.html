@@ -1,0 +1,307 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% block title %}Bosh sahifa{% endblock %}
+{% block content %}
+    <div class="container-fluid py-3">
+        <div class="container">
+            <div class="owl-carousel owl-carousel-2 carousel-item-3 position-relative">
+                {% for list in news_list %}
+                <div class="d-flex">
+                    <img src="{{list.image.url}}" style="width: 80px; height: 80px; object-fit: cover;">
+                    <div class="d-flex align-items-center bg-light px-3" style="height: 80px;">
+                        <a class="text-secondary font-weight-semi-bold" href="{{list.get_absolute_url}}">{{list.title}}</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Top News Slider End -->
+
+
+    <!-- Main News Slider Start -->
+    <div class="container-fluid py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="owl-carousel owl-carousel-2 carousel-item-1 position-relative mb-3 mb-lg-0">
+                        {% for news in news_list %}
+                        <div class="position-relative overflow-hidden" style="height: 435px;">
+                            <img class="img-fluid h-100" src="{{news.image.url}}" style="object-fit: cover;">
+                            <div class="overlay">
+                                <div class="mb-1">
+                                    <a class="text-white" href="{{news.get_absolute_url}}">{{news.title}}</a>
+                                    <span class="px-2 text-white">/</span>
+                                    <a class="text-white" href="{{news.get_absolute_url}}">{{news.created_time}}</a>
+                                </div>
+                                <a class="h2 m-0 text-white font-weight-bold" href="{{news.get_absolute_url}}">{{news.body|slice:"50"}}....</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
+                        <h3 class="m-0">Categories</h3>
+                        <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
+                    </div>
+                    {% for categ in categ %}
+                    <div class="position-relative overflow-hidden mb-3 categ-class" style="height: 80px; background-color: white;">
+                        <a href="" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
+                            {{categ.name}}
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main News Slider End -->
+
+
+    <!-- Featured News Slider Start -->
+    <div class="container-fluid py-3">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
+                <h3 class="m-0">So'ngi yangiliklar</h3>
+                <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
+            </div>
+            <div class="owl-carousel owl-carousel-2 carousel-item-4 position-relative">
+                {% for news in news_list %}
+                <div class="position-relative overflow-hidden" style="height: 300px;">
+                    <img class="img-fluid w-100 h-100" src="{{news.image.url}}" style="object-fit: cover;">
+                    <div class="overlay">
+                        <div class="mb-1" style="font-size: 13px;">
+                            <a class="text-white" href="{{news.get_absolute_url}}">{{news.title}}</a>
+                            <span class="px-1 text-white">/</span>
+                            <a class="text-white" href="">{{news.created_time}}</a>
+                        </div>
+                        <a class="h4 m-0 text-white" href="{{news.get_absolute_url}}">Read More</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Featured News Slider End -->
+
+
+    <!-- Category News Slider Start -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 py-3">
+                    <div class="bg-light py-2 px-4 mb-3">
+                        <h3 class="m-0">Mahaliy</h3>
+                    </div>
+                    <div class="owl-carousel owl-carousel-3 carousel-item-2 position-relative">
+                        {% for mahaliy in mahaliy_new %}
+                        <div class="position-relative">
+                            <img class="img-fluid w-100" src="{{mahaliy.image.url}}" style="object-fit: cover;">
+                            <div class="overlay position-relative bg-light">
+                                <div class="mb-2" style="font-size: 13px;">
+                                    <a href="{{mahaliy.get_absolute_url}}">{{mahaliy.title}}</a>
+                                    <span class="px-1">/</span>
+                                    <span>{{mahaliy.created_time}}</span>
+                                </div>
+                                <a class="h4 m-0" href="{{mahaliy.get_absolute_url}}">{{mahaliy.body|slice:"20"}}..</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="col-lg-6 py-3">
+                    <div class="bg-light py-2 px-4 mb-3">
+                        <h3 class="m-0">Sport</h3>
+                    </div>
+                    <div class="owl-carousel owl-carousel-3 carousel-item-2 position-relative">
+                        {% for sport in sport_news %}
+                        <div class="position-relative">
+                            <img class="img-fluid w-100" src="{{sport.image.url}}" style="object-fit: cover;">
+                            <div class="overlay position-relative bg-light">
+                                <div class="mb-2" style="font-size: 13px;">
+                                    <a href="{{sport.get_absolute_url}}">{{sport.title}}</a>
+                                    <span class="px-1">/</span>
+                                    <span>{{sport.created_time}}</span>
+                                </div>
+                                <a class="h3 m-0" href="{{sport.get_absolute_url}}">{{sport.body|slice:"20"}}..</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Category News Slider End -->
+
+
+    <!-- Category News Slider Start -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 py-3">
+                    <div class="bg-light py-2 px-4 mb-3">
+                        <h3 class="m-0">Texnologiya</h3>
+                    </div>
+                    <div class="owl-carousel owl-carousel-3 carousel-item-2 position-relative">
+                        {% for texno in texnologiya_new %}
+                        <div class="position-relative">
+                            <img class="img-fluid w-100" src="{{texno.image.url}}" style="object-fit: cover;">
+                            <div class="overlay position-relative bg-light">
+                                <div class="mb-2" style="font-size: 13px;">
+                                    <a href="{{texno.get_absolute_url}}">{{texno.title}}</a>
+                                    <span class="px-1">/</span>
+                                    <span>{{texno.created_time}}</span>
+                                </div>
+                                <a class="h4 m-0" href="{{texno.get_absolute_url}}">{{texno.body|slice:"20"}}..</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <div class="bg-light py-2 px-4 mb-3">
+                        <h3 class="m-0">Xorijiy</h3>
+                    </div>
+                    <div class="owl-carousel owl-carousel-3 carousel-item-2 position-relative">
+                        {% for xorij in xorij_new %}
+                        <div class="position-relative">
+                            <img class="img-fluid w-100" src="{{xorij.image.url}}" style="object-fit: cover;">
+                            <div class="overlay position-relative bg-light">
+                                <div class="mb-2" style="font-size: 13px;">
+                                    <a href="{{xorij.get_absolute_url}}">{{xorij.title}}</a>
+                                    <span class="px-1">/</span>
+                                    <span>{{xorij.created_time}}</span>
+                                </div>
+                                <a class="h4 m-0" href="{{xorij.get_absolute_url}}">{{xorij.body|slice:"20"}}..</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Category News Slider End -->
+
+
+    <!-- News With Sidebar Start -->
+    <div class="container-fluid py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
+                                <h3 class="m-0">Iqtisodiyot va Biznes</h3>
+                                <a class="text-secondary font-weight-medium text-decoration-none" href="">Barchasi</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            {% for iqtisod in iqtisod_new %}
+                            <div class="position-relative mb-3">
+                                <img class="img-fluid w-100" src="{{iqtisod.image.url}}" style="object-fit: cover;">
+                                <div class="overlay position-relative bg-light">
+                                    <div class="mb-2" style="font-size: 14px;">
+                                        <a href="{{iqtisod.get_absolute_url}}">{{iqtisod.category}}</a>
+                                        <span class="px-1">/</span>
+                                        <span>{{iqtisod.created_time}}</span>
+                                    </div>
+                                    <a class="h4" href="{{iqtisod.get_absolute_url}}">{{iqtisod.title}}</a>
+                                    <p class="m-0">{{iqtisod.body|slice:"20"}}..</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-lg-6">
+                            {% for biznes in biznes_new %}
+                            <div class="position-relative mb-3">
+                                <img class="img-fluid w-100" src="{{biznes.image.url}}" style="object-fit: cover;">
+                                <div class="overlay position-relative bg-light">
+                                    <div class="mb-2" style="font-size: 14px;">
+                                        <a href="{{biznes.get_absolute_url}}">{{biznes.category}}</a>
+                                        <span class="px-1">/</span>
+                                        <span>{{biznes.created_time}}</span>
+                                    </div>
+                                    <a class="h4" href="{{biznes.get_absolute_url}}">{{biznes.title}}</a>
+                                    <p class="m-0">{{biznes.body|slice:"80"}}..</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 pb-3">
+                        <a href=""><img class="img-fluid w-100" src="{% static 'img/ads-700x70.jpg' %}" alt=""></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 pt-3 pt-lg-0">
+                    <!-- Social Follow Start -->
+                    <div class="pb-3">
+                        <div class="bg-light py-2 px-4 mb-3">
+                            <h3 class="m-0">Follow Us</h3>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2" style="background: #39569E;">
+                                <small class="fab fa-facebook-f mr-2"></small><small>12,345 Fans</small>
+                            </a>
+                            <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2" style="background: #52AAF4;">
+                                <small class="fab fa-twitter mr-2"></small><small>12,345 Followers</small>
+                            </a>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2" style="background: #0185AE;">
+                                <small class="fab fa-linkedin-in mr-2"></small><small>12,345 Connects</small>
+                            </a>
+                            <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2" style="background: #C8359D;">
+                                <small class="fab fa-instagram mr-2"></small><small>12,345 Followers</small>
+                            </a>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2" style="background: #DC472E;">
+                                <small class="fab fa-youtube mr-2"></small><small>12,345 Subscribers</small>
+                            </a>
+                            <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2" style="background: #1AB7EA;">
+                                <small class="fab fa-vimeo-v mr-2"></small><small>12,345 Followers</small>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Social Follow End -->
+
+                    <!-- Newsletter Start -->
+                    <div class="pb-3">
+                        <div class="bg-light py-2 px-4 mb-3">
+                            <h3 class="m-0">Newsletter</h3>
+                        </div>
+                        <div class="bg-light text-center p-4 mb-3">
+                            <p>Aliqu justo et labore at eirmod justo sea erat diam dolor diam vero kasd</p>
+                            <div class="input-group" style="width: 100%;">
+                                <input type="text" class="form-control form-control-lg" placeholder="Your Email">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary">Sign Up</button>
+                                </div>
+                            </div>
+                            <small>Sit eirmod nonumy kasd eirmod</small>
+                        </div>
+                    </div>
+                    <!-- Newsletter End -->
+
+                    <!-- Ads Start -->
+                    <div class="mb-3 pb-3">
+                        <a href=""><img class="img-fluid" src="{% static 'img/news-500x280-4.jpg' %}" alt=""></a>
+                    </div>
+   
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
+    
