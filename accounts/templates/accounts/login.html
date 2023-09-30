@@ -1,0 +1,17 @@
+{% extends 'news/base.html' %}
+
+{% load static %}
+
+{% block title %} Login {% endblock %}
+
+{% block content %}
+    <h1 class="text-center">Kirish</h1>
+    <p class="text-center">Iltoms saytga kirish uchun formuni to'ldiring</p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-info ml-2" type="submit">Login</button>
+    </form>
+
+{% endblock  %}

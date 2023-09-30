@@ -1,7 +1,8 @@
 from django.shortcuts import redirect, HttpResponse, render, get_object_or_404
 from .models import *
-from django.views.generic import UpdateView, ListView, DateDetailView,CreateView
+from django.views.generic import UpdateView, ListView, DeleteView,CreateView
 from .forms import ContactForm
+from django.urls import reverse_lazy
 
 def news_list(request):
     # news_list = New.objects.filter(status=New.Status.Published)
@@ -107,10 +108,17 @@ class NewsUpdateView(UpdateView):
     model = New
     fields = ('title', 'body','image','category','status')
     template_name = 'crud/news_edit.html'
-    
 
-class NewsUpdateView(UpdateView):
-    
+
+
+class DeleteView(DeleteView):
     model = New
-    
+    template_name = 'crud/news_delete.html' 
+    success_url = reverse_lazy('home_page')
 
+
+
+class NewsCreateView(CreateView):
+    model = New
+    template_name = 'crud/news_create.html'
+    fields = ('title', 'slug','body','image','category','status')

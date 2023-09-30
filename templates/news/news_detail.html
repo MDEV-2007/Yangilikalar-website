@@ -24,7 +24,10 @@
                                 <h3 class="mb-3">{{news.title}}</h3>
                                 <p>{{news.body}}</p>
                             </div>
+
                         </div>
+                        <a href="{% url 'news_delete' news.slug %}"><button type="submit" class="btn btn-danger ml-2">O'chirish</button></a>
+                        <a href="{% url 'news_update' news.slug %}"><button type="submit" class="btn btn-info ml-2">Tahrirlash</button></a>
                     </div>
 
                     <div class="bg-light mb-3" style="padding: 30px;">
