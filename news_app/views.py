@@ -108,3 +108,9 @@ class NewsUpdateView(UpdateView):
     fields = ('title', 'body','image','category','status')
     template_name = 'crud/news_edit.html'
     
+
+class NewsUpdateView(UpdateView):
+    
+    model = New
+    
+
